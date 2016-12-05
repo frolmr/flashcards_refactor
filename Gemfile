@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '2.1.4'
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.1'
+gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'sass-rails', '~> 4.0.3'
@@ -31,6 +31,8 @@ gem 'http_accept_language'
 gem 'routing-filter'
 gem 'rollbar'
 gem 'newrelic_rpm'
+
+gem 'responders', '~> 2.0'
 
 group :development, :test do
   gem 'rspec-rails'

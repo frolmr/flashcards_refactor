@@ -12,14 +12,10 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
-  validates :password, confirmation: true, presence: true,
-            length: { minimum: 3 }
+  validates :password, confirmation: true, presence: true, length: { minimum: 3 }
   validates :password_confirmation, presence: true
-  validates :email, uniqueness: true, presence: true,
-            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
-  validates :locale, presence: true,
-            inclusion: { in: I18n.available_locales.map(&:to_s),
-                         message: 'Выберите локаль из выпадающего списка.' }
+  validates :email, uniqueness: true, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/ }
+  validates :locale, presence: true, inclusion: { in: I18n.available_locales.map(&:to_s), message: 'Выберите локаль из выпадающего списка.' }
 
   def has_linked_github?
     authentications.where(provider: 'github').present?
