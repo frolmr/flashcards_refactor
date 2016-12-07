@@ -28,7 +28,7 @@ ru:
   flashcards_label: 'Флэшкарточкер'
   log_in_with_github_label: 'Войти через Github'
   correct_translation_notice: 'Вы ввели верный перевод. Продолжайте.'
-  incorrect_translation_alert: 'Вы ввели не верный перевод. Повторите попытку.'
+  incorrect_translation_alert: 'Вы ввели неверный перевод. Повторите попытку.'
   translation_from_misprint_alert: "Вы ввели перевод c опечаткой.
       Ваш вариант: %{user_translation} / Оригинал: %{original_text} /
       Перевод: %{translated_text}. Продолжайте."
@@ -44,4 +44,4 @@ ru:
         too_short: 'Короткое значение.'
         confirmation: 'Значения не совпадают.'
         taken: 'Не уникальное значение.'
-        invalid: 'Не верный формат.'
+        invalid: 'Неверный формат.'
