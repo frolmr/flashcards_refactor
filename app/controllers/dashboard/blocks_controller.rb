@@ -1,5 +1,4 @@
 class Dashboard::BlocksController < Dashboard::BaseController
-  respond_to :html, :xml, :json
   before_action :set_block, only: [:destroy, :edit, :update, :set_as_current,
                                    :reset_as_current]
 
@@ -11,7 +10,8 @@ class Dashboard::BlocksController < Dashboard::BaseController
     @block = Block.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @block = current_user.blocks.build(block_params)

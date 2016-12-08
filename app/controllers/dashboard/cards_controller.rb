@@ -1,5 +1,4 @@
 class Dashboard::CardsController < Dashboard::BaseController
-  respond_to :html, :xml, :json
   before_action :set_card, only: [:destroy, :edit, :update]
 
   def index
@@ -10,7 +9,8 @@ class Dashboard::CardsController < Dashboard::BaseController
     @card = Card.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @card = current_user.cards.build(card_params)

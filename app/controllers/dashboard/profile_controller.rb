@@ -1,7 +1,8 @@
 class Dashboard::ProfileController < Dashboard::BaseController
   respond_to :html, :xml, :json
 
-  def edit; end
+  def edit
+  end
 
   def update
     if current_user.update(user_params)

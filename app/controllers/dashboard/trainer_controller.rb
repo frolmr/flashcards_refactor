@@ -1,8 +1,16 @@
 class Dashboard::TrainerController < Dashboard::BaseController
-  include IndexCards
-
   def index
-    find_card
+    @card =
+      if current_user.current_block
+        current_user.current_block.cards.pending.first || current_user.current_block.cards.repeating.first
+      else
+        current_user.cards.pending.first || current_user.cards.repeating.first
+      end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def review_card
