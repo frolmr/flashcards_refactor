@@ -20,7 +20,7 @@ describe 'password authentication' do
 
     it 'e-mail FALSE' do
       register('test', '12345', '12345', 'Зарегистрироваться')
-      expect(page).to have_content 'Не верный формат.'
+      expect(page).to have_content 'Неверный формат.'
     end
 
     it 'e-mail has already been taken' do

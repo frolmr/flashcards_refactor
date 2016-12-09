@@ -1,4 +1,5 @@
 class Dashboard::ProfileController < Dashboard::BaseController
+  respond_to :html, :xml, :json
 
   def edit
   end

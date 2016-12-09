@@ -38,9 +38,9 @@ en:
   please_log_in: 'Please log in.'
 
   activerecord:
-      errors:
-        messages:
-          blank: 'Fill out the field.'
-          too_short: 'Short value.'
-          confirmation: 'Values do not match.'
-          taken: 'Not a unique value.'
+    errors:
+      messages:
+        blank: 'Fill out the field.'
+        too_short: 'Short value.'
+        confirmation: 'Values do not match.'
+        taken: 'Not a unique value.'
