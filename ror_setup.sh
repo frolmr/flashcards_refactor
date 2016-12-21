@@ -10,19 +10,16 @@ sudo yum install -y postgresql-server postgresql-contrib postgresql-devel
 echo "Init postgres"
 sudo postgresql-setup initdb
 
-echo "Postrgres config"
-sudo sed -i -e 's/ident/md5/g' /var/lib/pgsql/data/pg_hba.conf
-
 echo "Start postgres service"
 sudo systemctl start postgresql
 sudo systemctl enable postgresql
 
-echo "Create postgres users for dev and test"
-sudo -u postgres psql -c "CREATE ROLE flashcards_refactor_user PASSWORD 'gfhjkm' CREATEDB INHERIT LOGIN;"
-sudo -u postgres psql -c "ALTER USER flashcards_refactor_user WITH ENCRYPTED PASSWORD 'gfhjkm'"
-sudo -u postgres psql -c "CREATE ROLE flashcards_refactor_test_user PASSWORD 'gfhjkm' CREATEDB INHERIT LOGIN;"
-sudo -u postgres psql -c "ALTER USER flashcards_refactor_test_user WITH ENCRYPTED PASSWORD 'gfhjkm'"
-sudo -u postgres psql -c "ALTER USER postgres WITH ENCRYPTED PASSWORD 'postgres'"
+echo "Change default user password"
+sudo -u postgres psql -c "ALTER USER postgres PASSWORD 'gfhjkm';"
+
+echo "Postrgres config"
+sudo sed -i -e 's/peer/md5/g;s/ident/md5/g' /var/lib/pgsql/data/pg_hba.conf
+sudo systemctl restart postgresql
 
 echo "Install dependencies for rbenv"
 sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel nodejs
