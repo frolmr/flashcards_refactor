@@ -37,6 +37,10 @@ gem 'responders'
 
 gem 'puma'
 
+gem 'rails_admin'
+gem 'pundit'
+gem "rails_admin_pundit", :github => "sudosu/rails_admin_pundit"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
