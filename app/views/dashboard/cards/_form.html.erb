@@ -33,6 +33,18 @@
       </div>
     </div>
   <% end %>
+  <a href="#" id="flickr_load_form_toggle">Загрузить из Flickr</a>
 
-  <%= f.button :submit, 'Сохранить', class: 'btn btn-default' %>
+  <div class="form-inline" id="flickr_load_form">
+    <div class="form-group">
+      <%= f.input :flickr_tag, input_html: { class: 'form-control'}, label: false %>
+    </div>
+      <%= link_to 'Найти во Flickr', find_flickr_images_path, class: 'btn btn-default', id: 'search_images', remote: true %>
+  </div>
+  <div id="spinner"><%= image_tag 'ajax-loader.gif' %></div>
+  <div id="photos"></div>
+
+  <%= f.hidden_field :remote_image_url %>
+
+  <%= f.button :submit, 'Сохранить', class: 'btn btn-primary' %>
 <% end %>
