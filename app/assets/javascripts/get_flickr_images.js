@@ -3,7 +3,6 @@ $(document).ready(function() {
     $.ajax({
       data: { flickr_tag: $('#card_flickr_tag').val() },
       url: $(this).attr('href'),
-      type: 'get',
       dataType: 'json',
       success: function(json) {
         images = json.list

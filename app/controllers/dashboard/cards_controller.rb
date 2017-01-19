@@ -38,7 +38,7 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def find_on_flickr
-    photos_list = flickr.photos.search tags: params[:flickr_tag], per_page: 10, format: 'json'
+    photos_list = search_photos(params[:flickr_tag])
     respond_to do |format|
       format.html
       format.json do
@@ -51,21 +51,21 @@ class Dashboard::CardsController < Dashboard::BaseController
 
   private
 
-  def set_card
-    @card = current_user.cards.find(params[:id])
+  def search_photos(tags)
+    flickr.photos.search text: tags, per_page: 10, format: 'json'
   end
 
   def find_urls(list)
-    urls = []
-    list.each do |photo|
-      urls << FlickRaw.url_m(flickr.photos.getInfo(photo_id: photo.id))
-    end
-    urls
+    list.map { |photo| FlickRaw.url_m(photo) }
   end
 
   def flickr_secrets
     FlickRaw.api_key = ENV['FLICKR_API_KEY']
     FlickRaw.shared_secret = ENV['FLICKR_SHARED_SECRET']
+  end
+
+  def set_card
+    @card = current_user.cards.find(params[:id])
   end
 
   def card_params
