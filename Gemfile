@@ -41,7 +41,7 @@ gem 'rails_admin'
 gem 'pundit'
 gem "rails_admin_pundit", :github => "sudosu/rails_admin_pundit"
 
-gem 'flickraw'
+gem 'flickraw-cached'
 
 group :development, :test do
   gem 'rspec-rails'

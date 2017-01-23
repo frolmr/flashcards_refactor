@@ -1,8 +1,5 @@
 class Dashboard::CardsController < Dashboard::BaseController
-  require 'flickraw'
-
   before_action :set_card, only: [:destroy, :edit, :update]
-  before_action :flickr_secrets, only: [:find_on_flickr]
 
   def index
     @cards = current_user.cards.all.order('review_date')
@@ -38,31 +35,15 @@ class Dashboard::CardsController < Dashboard::BaseController
   end
 
   def find_on_flickr
-    photos_list = search_photos(params[:flickr_tag])
+    urls_list = FlickrSearch.new.search_photos_urls(params[:flickr_tag])
     respond_to do |format|
-      format.html
       format.json do
-        render json: {
-          list: find_urls(photos_list),
-        }
+        render json: { list: urls_list }
       end
     end
   end
 
   private
-
-  def search_photos(tags)
-    flickr.photos.search text: tags, per_page: 10, format: 'json'
-  end
-
-  def find_urls(list)
-    list.map { |photo| FlickRaw.url_m(photo) }
-  end
-
-  def flickr_secrets
-    FlickRaw.api_key = ENV['FLICKR_API_KEY']
-    FlickRaw.shared_secret = ENV['FLICKR_SHARED_SECRET']
-  end
 
   def set_card
     @card = current_user.cards.find(params[:id])
