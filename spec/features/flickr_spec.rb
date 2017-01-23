@@ -35,9 +35,9 @@ describe Dashboard::CardsController do
     end
 
     it 'should return array of photos' do
-      links = FlickrSearch.new.search_photos_urls('test')
-      expect(links).to be_instance_of(Array)
-      expect(links.length).to eq 10
+      urls = FlickrSearch.new.search_photos_urls('test')
+      expect(urls).to be_instance_of(Array)
+      expect(urls.length).to eq 10
     end
   end
 end
