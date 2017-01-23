@@ -22,8 +22,6 @@ describe Dashboard::CardsController do
     end
 
     before(:each) do
-      FlickRaw.api_key = ENV['FLICKR_API_KEY']
-      FlickRaw.shared_secret = ENV['FLICKR_SHARED_SECRET']
       stub_request(:post, 'https://api.flickr.com/services/rest/').
       with(body: { format: 'json', method: 'flickr.photos.search', nojsoncallback: '1', per_page: '10', text: 'test' }).
       and_return(body: photos_list)
