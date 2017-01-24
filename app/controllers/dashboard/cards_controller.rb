@@ -17,7 +17,7 @@ class Dashboard::CardsController < Dashboard::BaseController
     if @card.save
       redirect_to cards_path
     else
-      respond_with @card
+      render 'new'
     end
   end
 
@@ -25,13 +25,22 @@ class Dashboard::CardsController < Dashboard::BaseController
     if @card.update(card_params)
       redirect_to cards_path
     else
-      respond_with @card
+      render 'edit'
     end
   end
 
   def destroy
     @card.destroy
-    respond_with @card
+    redirect_to cards_path
+  end
+
+  def find_on_flickr
+    urls_list = FlickrSearch.new.search_photos_urls(params[:flickr_tag])
+    respond_to do |format|
+      format.json do
+        render json: { list: urls_list }
+      end
+    end
   end
 
   private
@@ -42,6 +51,6 @@ class Dashboard::CardsController < Dashboard::BaseController
 
   def card_params
     params.require(:card).permit(:original_text, :translated_text, :review_date,
-                                 :image, :image_cache, :remove_image, :block_id)
+                                 :image, :image_cache, :remote_image_url, :block_id)
   end
 end

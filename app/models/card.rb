@@ -1,6 +1,8 @@
 require 'super_memo'
 
 class Card < ActiveRecord::Base
+  attr_accessor :flickr_tag
+
   belongs_to :user
   belongs_to :block
   validates :user_id, presence: true

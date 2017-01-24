@@ -41,8 +41,11 @@ gem 'rails_admin'
 gem 'pundit'
 gem "rails_admin_pundit", :github => "sudosu/rails_admin_pundit"
 
+gem 'flickraw-cached'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'factory_girl_rails'
+  gem 'webmock'
 end

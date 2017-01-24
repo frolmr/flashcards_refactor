@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
     resources :cards
 
+    put 'find_flickr_images' => 'cards#find_on_flickr'
+
     resources :blocks do
       member do
         put 'set_as_current'
