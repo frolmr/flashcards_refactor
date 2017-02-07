@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount ApiFlashcards::Engine, at: "/api"
+
   filter :locale
 
   root 'main#index'

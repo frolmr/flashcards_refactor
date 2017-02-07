@@ -43,6 +43,8 @@ gem "rails_admin_pundit", :github => "sudosu/rails_admin_pundit"
 
 gem 'flickraw-cached'
 
+gem 'api_flashcards', path: '../api_flashcards'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

@@ -6,6 +6,12 @@ GIT
       pundit (>= 0.2.3)
       rails_admin (>= 0.6.2)
 
+PATH
+  remote: ../api_flashcards
+  specs:
+    api_flashcards (0.1.0)
+      rails (~> 5.0.0, >= 5.0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -287,6 +293,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  api_flashcards!
   capybara
   carrierwave
   coffee-rails
